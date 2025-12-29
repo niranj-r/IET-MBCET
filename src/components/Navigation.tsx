@@ -9,10 +9,18 @@ const Navigation = () => {
 
   const [isEventsDropdownOpen, setIsEventsDropdownOpen] = useState(false);
   const currentYear = new Date().getFullYear();
-  const years = [currentYear, currentYear - 1, currentYear - 2, currentYear - 3, currentYear - 4];
+  const years = [
+    currentYear,
+    currentYear - 1,
+    currentYear - 2,
+    currentYear - 3,
+    currentYear - 4,
+  ];
 
+  // NEW ORDER: home → events → team → contact → join iet
   const links = [
     { to: "/", label: "Home" },
+    { to: `/events/${currentYear}`, label: "Events", isEvents: true },
     { to: "/team", label: "Team" },
     { to: "/contact", label: "Contact" },
   ];
@@ -25,7 +33,6 @@ const Navigation = () => {
         <div className="flex items-center justify-between">
 
           {/* Logo */}
-          {/* Logo */}
           <Link to="/" className="flex items-center">
             <img
               src="/iet-logo.png"
@@ -34,65 +41,77 @@ const Navigation = () => {
             />
           </Link>
 
-
-          {/* Desktop Links */}
+          {/* Desktop Nav */}
           <div className="hidden md:flex items-center gap-8">
-            {links.map((link) => (
-              <Link
-                key={link.to}
-                to={link.to}
-                className={`font-body font-medium transition-smooth relative ${isActive(link.to) ? "text-primary" : "text-foreground hover:text-primary"
-                  }`}
-              >
-                {link.label}
-                {isActive(link.to) && (
-                  <span className="absolute -bottom-1 left-0 w-full h-0.5 bg-primary" />
-                )}
-              </Link>
-            ))}
+            {links.map((link) =>
+              link.isEvents ? (
+                // EVENTS WITH DROPDOWN
+                <div
+                  key={link.label}
+                  className="relative"
+                  onMouseEnter={() => setIsEventsDropdownOpen(true)}
+                  onMouseLeave={() => setIsEventsDropdownOpen(false)}
+                >
+                  <Link
+                    to={link.to}
+                    className={`font-body font-medium relative transition-smooth ${
+                      location.pathname.startsWith("/events")
+                        ? "text-primary"
+                        : "text-foreground hover:text-primary"
+                    }`}
+                  >
+                    Events
+                    {location.pathname.startsWith("/events") && (
+                      <span className="absolute -bottom-1 left-0 w-full h-0.5 bg-primary" />
+                    )}
+                  </Link>
 
-            {/* Events Dropdown */}
-            <div
-              className="relative"
-              onMouseEnter={() => setIsEventsDropdownOpen(true)}
-              onMouseLeave={() => setIsEventsDropdownOpen(false)}
-            >
-              <Link
-                to={`/events/${currentYear}`}
-                className={`font-body font-medium transition-smooth relative ${location.pathname.startsWith('/events') ? "text-primary" : "text-foreground hover:text-primary"
-                  }`}
-              >
-                Events
-                {location.pathname.startsWith('/events') && (
-                  <span className="absolute -bottom-1 left-0 w-full h-0.5 bg-primary" />
-                )}
-              </Link>
-
-              {isEventsDropdownOpen && (
-                <div className="absolute top-full left-0 mt-2 w-48 bg-background border-2 border-primary/20 shadow-lg z-50 animate-fade-in">
-                  <div className="py-2">
-                    <div className="px-4 py-2 microtext text-foreground/60">SELECT YEAR</div>
-                    {years.map((year) => (
-                      <Link
-                        key={year}
-                        to={`/events/${year}`}
-                        className="block px-4 py-2 text-foreground hover:bg-primary/10 hover:text-primary transition-smooth font-medium"
-                        onClick={() => setIsEventsDropdownOpen(false)}
-                      >
-                        {year}
-                      </Link>
-                    ))}
-                  </div>
+                  {isEventsDropdownOpen && (
+                    <div className="absolute top-full left-0 mt-2 w-48 bg-background border-2 border-primary/20 shadow-lg z-50 animate-fade-in">
+                      <div className="py-2">
+                        <div className="px-4 py-2 microtext text-foreground/60">
+                          SELECT YEAR
+                        </div>
+                        {years.map((year) => (
+                          <Link
+                            key={year}
+                            to={`/events/${year}`}
+                            className="block px-4 py-2 text-foreground hover:bg-primary/10 hover:text-primary font-medium transition-smooth"
+                            onClick={() => setIsEventsDropdownOpen(false)}
+                          >
+                            {year}
+                          </Link>
+                        ))}
+                      </div>
+                    </div>
+                  )}
                 </div>
-              )}
-            </div>
+              ) : (
+                // NORMAL LINKS
+                <Link
+                  key={link.to}
+                  to={link.to}
+                  className={`font-body font-medium relative transition-smooth ${
+                    isActive(link.to)
+                      ? "text-primary"
+                      : "text-foreground hover:text-primary"
+                  }`}
+                >
+                  {link.label}
+                  {isActive(link.to) && (
+                    <span className="absolute -bottom-1 left-0 w-full h-0.5 bg-primary" />
+                  )}
+                </Link>
+              )
+            )}
 
+            {/* JOIN IET BUTTON */}
             <Button variant="default" size="sm" asChild>
               <Link to="/contact">Join IET</Link>
             </Button>
           </div>
 
-          {/* Mobile Menu Button */}
+          {/* Mobile Menu Toggle */}
           <button
             onClick={() => setIsOpen(!isOpen)}
             className="md:hidden text-primary"
@@ -104,38 +123,67 @@ const Navigation = () => {
 
         {/* Mobile Menu */}
         {isOpen && (
-          <div className="md:hidden mt-4 pb-4 border-t border-primary/20 pt-4 animate-fade-in">
+          <div className="md:hidden mt-4 pb-4 pt-4 border-t border-primary/20 animate-fade-in">
             <div className="flex flex-col gap-4">
-              {links.map((link) => (
-                <Link
-                  key={link.to}
-                  to={link.to}
-                  onClick={() => setIsOpen(false)}
-                  className={`font-body font-medium py-2 transition-smooth ${isActive(link.to) ? "text-primary" : "text-foreground"
-                    }`}
-                >
-                  {link.label}
-                </Link>
-              ))}
+              {/* Home */}
+              <Link
+                to="/"
+                className={`font-body py-2 ${
+                  isActive("/") ? "text-primary" : "text-foreground"
+                }`}
+                onClick={() => setIsOpen(false)}
+              >
+                Home
+              </Link>
 
-              {/* Events Mobile */}
-              <div className="border-t border-primary/20 pt-4">
-                <div className="microtext text-foreground/60 mb-2">EVENTS BY YEAR</div>
+              {/* Events Year List */}
+              <div>
+                <div className="microtext text-foreground/60 mb-2">
+                  EVENTS BY YEAR
+                </div>
                 {years.map((year) => (
                   <Link
                     key={year}
                     to={`/events/${year}`}
                     onClick={() => setIsOpen(false)}
-                    className={`block font-body font-medium py-2 transition-smooth ${location.pathname === `/events/${year}` ? "text-primary" : "text-foreground"
-                      }`}
+                    className={`block py-2 font-body ${
+                      location.pathname === `/events/${year}`
+                        ? "text-primary"
+                        : "text-foreground"
+                    }`}
                   >
                     {year}
                   </Link>
                 ))}
               </div>
 
+              {/* Team */}
+              <Link
+                to="/team"
+                className={`font-body py-2 ${
+                  isActive("/team") ? "text-primary" : "text-foreground"
+                }`}
+                onClick={() => setIsOpen(false)}
+              >
+                Team
+              </Link>
+
+              {/* Contact */}
+              <Link
+                to="/contact"
+                className={`font-body py-2 ${
+                  isActive("/contact") ? "text-primary" : "text-foreground"
+                }`}
+                onClick={() => setIsOpen(false)}
+              >
+                Contact
+              </Link>
+
+              {/* Join IET */}
               <Button variant="default" size="sm" asChild className="w-full">
-                <Link to="/contact" onClick={() => setIsOpen(false)}>Join IET</Link>
+                <Link to="/contact" onClick={() => setIsOpen(false)}>
+                  Join IET
+                </Link>
               </Button>
             </div>
           </div>

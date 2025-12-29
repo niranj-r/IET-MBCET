@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
-import { Calendar, MapPin, Users, Search } from "lucide-react";
+import { Calendar, MapPin, Search } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import Navigation from "@/components/Navigation";
@@ -11,14 +11,16 @@ type EventStatus = "ALL" | "UPCOMING" | "ONGOING" | "COMPLETED";
 const Events = () => {
   const { year } = useParams();
   const currentYear = new Date().getFullYear();
-  const [selectedYear, setSelectedYear] = useState(parseInt(year || currentYear.toString()));
+
+  const [selectedYear, setSelectedYear] = useState<number>(
+    parseInt(year || currentYear.toString())
+  );
   const [selectedStatus, setSelectedStatus] = useState<EventStatus>("ALL");
   const [searchQuery, setSearchQuery] = useState("");
+  const [filtersOpen, setFiltersOpen] = useState(false);
 
   useEffect(() => {
-    if (year) {
-      setSelectedYear(parseInt(year));
-    }
+    if (year) setSelectedYear(parseInt(year));
   }, [year]);
 
   const years = [currentYear, currentYear - 1, currentYear - 2, currentYear - 3];
@@ -32,7 +34,7 @@ const Events = () => {
       status: "UPCOMING",
       category: "WORKSHOP",
       year: 2024,
-      description: "Hands-on workshop on emerging technologies"
+      description: "Hands-on workshop on emerging technologies",
     },
     {
       id: 2,
@@ -42,7 +44,7 @@ const Events = () => {
       status: "ONGOING",
       category: "COMPETITION",
       year: 2024,
-      description: "24-hour coding marathon for innovative solutions"
+      description: "24-hour coding marathon for innovative solutions",
     },
     {
       id: 3,
@@ -52,7 +54,7 @@ const Events = () => {
       status: "UPCOMING",
       category: "SEMINAR",
       year: 2024,
-      description: "Guest lectures from industry experts"
+      description: "Guest lectures from industry experts",
     },
     {
       id: 4,
@@ -62,7 +64,7 @@ const Events = () => {
       status: "COMPLETED",
       category: "EXHIBITION",
       year: 2024,
-      description: "Showcase of student innovation projects"
+      description: "Showcase of student innovation projects",
     },
     {
       id: 5,
@@ -72,122 +74,186 @@ const Events = () => {
       status: "COMPLETED",
       category: "COMPETITION",
       year: 2024,
-      description: "Competitive programming competition"
-    },
-    {
-      id: 6,
-      title: "AI/ML Workshop Series",
-      date: "20 MAR 2024",
-      venue: "Seminar Hall B",
-      status: "COMPLETED",
-      category: "WORKSHOP",
-      year: 2024,
-      description: "Three-day intensive workshop on AI and Machine Learning"
+      description: "Competitive programming competition",
     },
   ];
 
-  const filteredEvents = events.filter(event => {
+  // filtering
+  const filteredEvents = events.filter((event) => {
     const matchesYear = event.year === selectedYear;
     const matchesStatus = selectedStatus === "ALL" || event.status === selectedStatus;
-    const matchesSearch = event.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                         event.category.toLowerCase().includes(searchQuery.toLowerCase());
+    const matchesSearch =
+      event.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      event.category.toLowerCase().includes(searchQuery.toLowerCase());
+
     return matchesYear && matchesStatus && matchesSearch;
   });
 
   return (
     <div className="min-h-screen">
       <Navigation />
-      
+
       {/* Hero */}
       <section className="pt-32 pb-16 md:pt-40 md:pb-24 border-b-4 border-primary">
         <div className="max-w-7xl mx-auto px-6">
-          <div className="relative">
-            <div className="microtext text-primary mb-6">IET MBCET EVENTS</div>
-            <h1 className="font-display font-bold text-6xl md:text-8xl lg:text-9xl text-primary leading-none editorial-spacing">
-              EVENTS
-            </h1>
-            <div className="absolute -right-4 top-1/2 -translate-y-1/2 microtext rotate-text-90 text-primary/40 hidden lg:block">
-              INNOVATION • LEARNING • COLLABORATION
-            </div>
-          </div>
+          <div className="microtext text-primary mb-6">IET MBCET EVENTS</div>
+          <h1 className="font-display font-bold text-6xl md:text-8xl lg:text-9xl text-primary leading-none">
+            EVENTS
+          </h1>
         </div>
       </section>
 
       {/* Filters */}
-      <section className="py-12 border-b border-primary/20">
-        <div className="max-w-7xl mx-auto px-6">
-          {/* Year Selector */}
-          <div className="mb-8">
-            <div className="microtext text-foreground/60 mb-4">SELECT YEAR</div>
-            <div className="flex flex-wrap gap-3">
-              {years.map((year) => (
-                <button
-                  key={year}
-                  onClick={() => setSelectedYear(year)}
-                  className={`px-6 py-3 font-display font-bold transition-smooth border-2 ${
-                    selectedYear === year
-                      ? "bg-primary text-primary-foreground border-primary"
-                      : "bg-background text-primary border-primary hover:bg-primary/10"
-                  }`}
-                >
-                  {year}
-                </button>
-              ))}
-            </div>
-          </div>
-
-          {/* Status Filter */}
-          <div className="mb-8">
-            <div className="microtext text-foreground/60 mb-4">FILTER BY STATUS</div>
-            <div className="flex flex-wrap gap-3">
-              {(["ALL", "UPCOMING", "ONGOING", "COMPLETED"] as EventStatus[]).map((status) => (
-                <button
-                  key={status}
-                  onClick={() => setSelectedStatus(status)}
-                  className={`px-6 py-3 font-medium transition-smooth border-2 microtext ${
-                    selectedStatus === status
-                      ? "bg-primary text-primary-foreground border-primary"
-                      : "bg-background text-foreground border-primary/30 hover:border-primary"
-                  }`}
-                >
-                  {status}
-                </button>
-              ))}
-            </div>
-          </div>
+      <section className="py-6 border-b border-primary/20">
+        <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row md:items-center justify-between gap-4">
 
           {/* Search */}
-          <div className="relative max-w-md">
-            <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-foreground/40" size={20} />
+          <div className="relative w-full md:w-1/3">
+            <Search
+              className="absolute left-4 top-1/2 -translate-y-1/2 text-foreground/40"
+              size={20}
+            />
             <Input
               type="text"
               placeholder="Search events..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="pl-12 border-2 border-primary/30 focus:border-primary"
+              className="pl-12 border-2 border-primary/30 focus:border-primary rounded-none"
             />
           </div>
+
+          {/* Filters Button */}
+          <div className="relative w-full md:w-auto">
+            <Button
+              onClick={() => setFiltersOpen((prev) => !prev)}
+              className="w-full md:w-auto px-6 py-2 border-accent text-accent bg-background hover:bg-accent hover:text-accent-foreground rounded-none"
+            >
+              Filters
+            </Button>
+
+            {filtersOpen && (
+              <div className="absolute right-0 mt-2 w-72 bg-background border border-primary/30 shadow-xl p-5 z-50 rounded-none animate-fade-in">
+
+                {/* Year */}
+                <div className="mb-6">
+                  <div className="microtext text-foreground/60 mb-3">YEAR</div>
+                  <div className="flex flex-wrap gap-2">
+                    {years.map((yr) => (
+                      <button
+                        key={yr}
+                        onClick={() => setSelectedYear(yr)}
+                        className={`px-4 py-2 border text-sm ${
+                          selectedYear === yr
+                            ? "bg-primary text-primary-foreground border-primary"
+                            : "border-primary/40 text-primary hover:bg-primary/10"
+                        }`}
+                      >
+                        {yr}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Status */}
+                <div>
+                  <div className="microtext text-foreground/60 mb-3">STATUS</div>
+                  <div className="flex flex-wrap gap-2">
+                    {(["ALL", "UPCOMING", "ONGOING", "COMPLETED"] as EventStatus[]).map(
+                      (status) => (
+                        <button
+                          key={status}
+                          onClick={() => setSelectedStatus(status)}
+                          className={`px-4 py-2 border text-sm ${
+                            selectedStatus === status
+                              ? "bg-primary text-primary-foreground border-primary"
+                              : "border-primary/40 text-foreground hover:bg-primary/10"
+                          }`}
+                        >
+                          {status}
+                        </button>
+                      )
+                    )}
+                  </div>
+                </div>
+              </div>
+            )}
+          </div>
         </div>
+
+        {/* Active Filters Display */}
+        {(selectedStatus !== "ALL" || searchQuery || selectedYear !== currentYear) && (
+          <div className="max-w-7xl mx-auto px-6 mt-4 flex flex-wrap items-center gap-3">
+
+            {/* Year filter tag */}
+            {selectedYear !== currentYear && (
+              <div className="px-4 py-1 border border-primary/40 text-primary text-sm flex items-center gap-2">
+                Year: {selectedYear}
+                <button
+                  onClick={() => setSelectedYear(currentYear)}
+                  className="text-primary hover:text-accent"
+                >
+                  ×
+                </button>
+              </div>
+            )}
+
+            {/* Status */}
+            {selectedStatus !== "ALL" && (
+              <div className="px-4 py-1 border border-primary/40 text-primary text-sm flex items-center gap-2">
+                Status: {selectedStatus}
+                <button
+                  onClick={() => setSelectedStatus("ALL")}
+                  className="text-primary hover:text-accent"
+                >
+                  ×
+                </button>
+              </div>
+            )}
+
+            {/* Search */}
+            {searchQuery && (
+              <div className="px-4 py-1 border border-primary/40 text-primary text-sm flex items-center gap-2">
+                Search: "{searchQuery}"
+                <button
+                  onClick={() => setSearchQuery("")}
+                  className="text-primary hover:text-accent"
+                >
+                  ×
+                </button>
+              </div>
+            )}
+
+            {/* Clear all */}
+            <button
+              onClick={() => {
+                setSelectedStatus("ALL");
+                setSelectedYear(currentYear);
+                setSearchQuery("");
+              }}
+              className="microtext text-accent hover:underline ml-2"
+            >
+              Clear All
+            </button>
+          </div>
+        )}
       </section>
 
-      {/* Events Grid */}
+      {/* Events */}
       <section className="py-16">
         <div className="max-w-7xl mx-auto px-6">
           {filteredEvents.length === 0 ? (
-            <div className="text-center py-24">
-              <p className="text-xl text-foreground/60">No events found matching your criteria.</p>
+            <div className="text-center py-24 text-xl text-foreground/60">
+              No events found matching your criteria.
             </div>
           ) : (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {filteredEvents.map((event, idx) => (
+              {filteredEvents.map((event) => (
                 <Link
                   key={event.id}
                   to={`/events/${event.id}`}
-                  className="group cursor-pointer animate-fade-in border-2 border-primary/20 hover:border-primary transition-smooth overflow-hidden block"
-                  style={{ animationDelay: `${idx * 0.05}s` }}
+                  className="group border-2 border-primary/20 hover:border-primary transition-smooth overflow-hidden"
                 >
-                  {/* Event Image */}
-                  <div className="aspect-video bg-gradient-to-br from-primary/20 to-accent/20 relative overflow-hidden">
+                  <div className="aspect-video bg-gradient-to-br from-primary/20 to-accent/20 relative">
                     <div className="absolute inset-0 flex items-center justify-center">
                       <Calendar size={48} className="text-primary/30" />
                     </div>
@@ -196,24 +262,21 @@ const Events = () => {
                     </div>
                   </div>
 
-                  {/* Event Details */}
                   <div className="p-6">
-                    <div className="microtext text-primary mb-3">{event.category}</div>
-                    <h3 className="font-display font-bold text-2xl text-primary mb-3 group-hover:translate-x-2 transition-smooth">
+                    <div className="microtext text-primary mb-2">{event.category}</div>
+                    <h3 className="font-display font-bold text-2xl text-primary mb-3 group-hover:translate-x-2 transition">
                       {event.title}
                     </h3>
                     <p className="text-sm text-foreground/70 mb-4 line-clamp-2">
                       {event.description}
                     </p>
-                    
+
                     <div className="space-y-2 text-sm text-foreground/60 border-t border-primary/20 pt-4">
                       <div className="flex items-center gap-2">
-                        <Calendar size={14} />
-                        {event.date}
+                        <Calendar size={14} /> {event.date}
                       </div>
                       <div className="flex items-center gap-2">
-                        <MapPin size={14} />
-                        {event.venue}
+                        <MapPin size={14} /> {event.venue}
                       </div>
                     </div>
 
