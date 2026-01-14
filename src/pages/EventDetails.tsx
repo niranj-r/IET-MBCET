@@ -4,72 +4,10 @@ import { Button } from "@/components/ui/button";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 
+import { events } from "@/data/events"
+
 const EventDetails = () => {
   const { id } = useParams();
-
-  // Mock event data - in a real app, fetch based on id
-  const events = [
-    {
-      id: 1,
-      title: "Tech Workshop 2024",
-      date: "15 DEC 2024",
-      time: "10:00 AM - 4:00 PM",
-      venue: "Seminar Hall A",
-      status: "UPCOMING",
-      category: "WORKSHOP",
-      year: 2024,
-      description: "An intensive hands-on workshop exploring the latest trends and technologies shaping the future of engineering. This full-day event will cover emerging topics including AI integration, cloud architecture, and modern development practices.",
-      highlights: [
-        "Interactive coding sessions",
-        "Live demonstrations by industry experts",
-        "Networking opportunities",
-        "Certificate of participation"
-      ],
-      organizers: ["IET MBCET", "Computer Science Department"],
-      capacity: "50 participants",
-      registration: "Open"
-    },
-    {
-      id: 2,
-      title: "Innovation Hackathon",
-      date: "20 DEC 2024",
-      time: "9:00 AM - 9:00 AM (24 hours)",
-      venue: "Main Auditorium",
-      status: "ONGOING",
-      category: "COMPETITION",
-      year: 2024,
-      description: "A 24-hour coding marathon where teams compete to develop innovative solutions to real-world problems. Participants will work on challenging projects while learning collaborative development practices.",
-      highlights: [
-        "Cash prizes for winners",
-        "Mentorship from industry professionals",
-        "Access to cutting-edge tools and APIs",
-        "Food and refreshments throughout"
-      ],
-      organizers: ["IET MBCET", "Innovation Cell"],
-      capacity: "100 participants (25 teams)",
-      registration: "Closed"
-    },
-    {
-      id: 3,
-      title: "Industry Connect Seminar",
-      date: "05 JAN 2025",
-      time: "2:00 PM - 5:00 PM",
-      venue: "Conference Hall",
-      status: "UPCOMING",
-      category: "SEMINAR",
-      year: 2024,
-      description: "Guest lectures from industry experts sharing insights about current trends, career opportunities, and the skills required to succeed in today's competitive engineering landscape.",
-      highlights: [
-        "Keynote by industry leaders",
-        "Panel discussion",
-        "Q&A session",
-        "Career guidance"
-      ],
-      organizers: ["IET MBCET", "Training & Placement Cell"],
-      capacity: "200 participants",
-      registration: "Open"
-    },
-  ];
 
   const event = events.find(e => e.id === parseInt(id || "0"));
 
@@ -93,26 +31,26 @@ const EventDetails = () => {
   return (
     <div className="min-h-screen">
       <Navigation />
-      
+
       {/* Hero Banner */}
       <section className="relative pt-32 pb-16 md:pt-40 md:pb-24 bg-primary text-primary-foreground overflow-hidden">
         <div className="absolute -right-12 top-1/2 -translate-y-1/2 microtext rotate-text-90 text-primary-foreground/20 hidden lg:block text-8xl">
           EVENT • IET MBCET
         </div>
         <div className="max-w-7xl mx-auto px-6">
-          <Link 
-            to="/events" 
+          <Link
+            to="/events"
             className="inline-flex items-center gap-2 text-primary-foreground/80 hover:text-primary-foreground mb-8 transition-smooth"
           >
             <ArrowLeft size={20} />
             <span className="font-medium">Back to Events</span>
           </Link>
-          
+
           <div className="microtext text-primary-foreground/60 mb-4">{event.category}</div>
           <h1 className="font-display font-bold text-5xl md:text-7xl lg:text-8xl leading-none mb-6">
             {event.title}
           </h1>
-          
+
           <div className="flex flex-wrap gap-6 text-primary-foreground/90">
             <div className="flex items-center gap-2">
               <Calendar size={20} />
@@ -133,10 +71,18 @@ const EventDetails = () => {
       {/* Event Image */}
       <section className="border-b-4 border-primary">
         <div className="max-w-7xl mx-auto">
-          <div className="aspect-[21/9] bg-gradient-to-br from-primary/20 to-accent/20 relative">
-            <div className="absolute inset-0 flex items-center justify-center">
-              <Calendar size={120} className="text-primary/20" />
-            </div>
+          <div className="aspect-[21/9] bg-gradient-to-br from-primary/20 to-accent/20 relative overflow-hidden">
+            {event.image ? (
+              <img
+                src={event.image}
+                alt={event.title}
+                className="w-full h-full object-cover"
+              />
+            ) : (
+              <div className="absolute inset-0 flex items-center justify-center">
+                <Calendar size={120} className="text-primary/20" />
+              </div>
+            )}
             <div className="absolute top-8 right-8 px-6 py-3 bg-primary text-primary-foreground microtext font-bold text-lg">
               {event.status}
             </div>
@@ -197,9 +143,9 @@ const EventDetails = () => {
                 <p className="mb-6 text-primary-foreground/90">
                   Register now to secure your spot for this event.
                 </p>
-                <Button 
-                  variant="secondary" 
-                  size="lg" 
+                <Button
+                  variant="secondary"
+                  size="lg"
                   className="w-full font-display font-bold"
                   asChild
                 >

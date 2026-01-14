@@ -6,7 +6,7 @@ import { Input } from "@/components/ui/input";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 
-type EventStatus = "ALL" | "UPCOMING" | "ONGOING" | "COMPLETED";
+import { events, EventStatus } from "@/data/events";
 
 const Events = () => {
   const { year } = useParams();
@@ -24,59 +24,6 @@ const Events = () => {
   }, [year]);
 
   const years = [currentYear, currentYear - 1, currentYear - 2, currentYear - 3];
-
-  const events = [
-    {
-      id: 1,
-      title: "Tech Workshop 2024",
-      date: "15 DEC 2024",
-      venue: "Seminar Hall A",
-      status: "UPCOMING",
-      category: "WORKSHOP",
-      year: 2024,
-      description: "Hands-on workshop on emerging technologies",
-    },
-    {
-      id: 2,
-      title: "Innovation Hackathon",
-      date: "20 DEC 2024",
-      venue: "Main Auditorium",
-      status: "ONGOING",
-      category: "COMPETITION",
-      year: 2024,
-      description: "24-hour coding marathon for innovative solutions",
-    },
-    {
-      id: 3,
-      title: "Industry Connect Seminar",
-      date: "05 JAN 2025",
-      venue: "Conference Hall",
-      status: "UPCOMING",
-      category: "SEMINAR",
-      year: 2024,
-      description: "Guest lectures from industry experts",
-    },
-    {
-      id: 4,
-      title: "Project Expo 2024",
-      date: "10 NOV 2024",
-      venue: "Exhibition Center",
-      status: "COMPLETED",
-      category: "EXHIBITION",
-      year: 2024,
-      description: "Showcase of student innovation projects",
-    },
-    {
-      id: 5,
-      title: "Code Sprint",
-      date: "15 SEP 2024",
-      venue: "Computer Lab",
-      status: "COMPLETED",
-      category: "COMPETITION",
-      year: 2024,
-      description: "Competitive programming competition",
-    },
-  ];
 
   // filtering
   const filteredEvents = events.filter((event) => {
@@ -142,11 +89,10 @@ const Events = () => {
                       <button
                         key={yr}
                         onClick={() => setSelectedYear(yr)}
-                        className={`px-4 py-2 border text-sm ${
-                          selectedYear === yr
-                            ? "bg-primary text-primary-foreground border-primary"
-                            : "border-primary/40 text-primary hover:bg-primary/10"
-                        }`}
+                        className={`px-4 py-2 border text-sm ${selectedYear === yr
+                          ? "bg-primary text-primary-foreground border-primary"
+                          : "border-primary/40 text-primary hover:bg-primary/10"
+                          }`}
                       >
                         {yr}
                       </button>
@@ -163,11 +109,10 @@ const Events = () => {
                         <button
                           key={status}
                           onClick={() => setSelectedStatus(status)}
-                          className={`px-4 py-2 border text-sm ${
-                            selectedStatus === status
-                              ? "bg-primary text-primary-foreground border-primary"
-                              : "border-primary/40 text-foreground hover:bg-primary/10"
-                          }`}
+                          className={`px-4 py-2 border text-sm ${selectedStatus === status
+                            ? "bg-primary text-primary-foreground border-primary"
+                            : "border-primary/40 text-foreground hover:bg-primary/10"
+                            }`}
                         >
                           {status}
                         </button>
@@ -254,9 +199,17 @@ const Events = () => {
                   className="group border-2 border-primary/20 hover:border-primary transition-smooth overflow-hidden"
                 >
                   <div className="aspect-video bg-gradient-to-br from-primary/20 to-accent/20 relative">
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <Calendar size={48} className="text-primary/30" />
-                    </div>
+                    {event.image ? (
+                      <img
+                        src={event.image}
+                        alt={event.title}
+                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                      />
+                    ) : (
+                      <div className="absolute inset-0 flex items-center justify-center">
+                        <Calendar size={48} className="text-primary/30" />
+                      </div>
+                    )}
                     <div className="absolute top-4 right-4 px-3 py-1 bg-primary text-primary-foreground microtext">
                       {event.status}
                     </div>
