@@ -35,7 +35,7 @@ const Contact = () => {
       <Navigation />
 
       {/* Hero */}
-      <section className="pt-32 pb-16 md:pt-40 md:pb-24 border-b-4 border-primary">
+      <section className="pt-32 pb-16 md:pt-40 md:pb-24 border-b-4 border-primary animate-fade-in-up">
         <div className="max-w-7xl mx-auto px-6">
           <div className="relative">
             <div className="microtext text-primary mb-6">GET IN TOUCH</div>
@@ -55,7 +55,7 @@ const Contact = () => {
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
             {/* Contact Form */}
-            <div className="animate-fade-in-left">
+            <div className="animate-fade-in-left delay-200">
               <h2 className="font-display font-bold text-4xl md:text-5xl text-primary mb-8">
                 Send us a message
               </h2>
@@ -143,7 +143,7 @@ const Contact = () => {
             </div>
 
             {/* Contact Information */}
-            <div className="animate-fade-in-right">
+            <div className="animate-fade-in-right delay-200">
               <h2 className="font-display font-bold text-4xl md:text-5xl text-primary mb-8">
                 Contact Information
               </h2>

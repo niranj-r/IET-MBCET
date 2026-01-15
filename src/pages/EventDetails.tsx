@@ -33,7 +33,7 @@ const EventDetails = () => {
       <Navigation />
 
       {/* Hero Banner */}
-      <section className="relative pt-32 pb-16 md:pt-40 md:pb-24 bg-primary text-primary-foreground overflow-hidden">
+      <section className="relative pt-32 pb-16 md:pt-40 md:pb-24 bg-primary text-primary-foreground overflow-hidden animate-fade-in-up">
         <div className="absolute -right-12 top-1/2 -translate-y-1/2 microtext rotate-text-90 text-primary-foreground/20 hidden lg:block text-8xl">
           EVENT • IET MBCET
         </div>
@@ -71,7 +71,7 @@ const EventDetails = () => {
 
 
       {/* Content */}
-      <section className="py-16 md:py-24">
+      <section className="py-16 md:py-24 animate-fade-in-up delay-200">
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
             {/* Main Content */}

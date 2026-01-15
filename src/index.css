@@ -9,8 +9,10 @@ All colors MUST be HSL.
 @layer base {
   :root {
     /* Editorial IET MBCET Theme - Cream & Maroon */
-    --background: 30 33% 94%;  /* Cream #F5EDE4 */
-    --foreground: 0 0% 10%;     /* Near Black */
+    --background: 30 33% 94%;
+    /* Cream #F5EDE4 */
+    --foreground: 0 0% 10%;
+    /* Near Black */
 
     --card: 30 33% 94%;
     --card-foreground: 0 0% 10%;
@@ -18,7 +20,8 @@ All colors MUST be HSL.
     --popover: 30 33% 94%;
     --popover-foreground: 0 0% 10%;
 
-    --primary: 357 67% 32%;     /* Deep Maroon #8E1F24 */
+    --primary: 357 67% 32%;
+    /* Deep Maroon #8E1F24 */
     --primary-foreground: 30 33% 94%;
 
     --secondary: 30 33% 94%;
@@ -27,7 +30,8 @@ All colors MUST be HSL.
     --muted: 30 20% 88%;
     --muted-foreground: 0 0% 40%;
 
-    --accent: 357 67% 38%;      /* Accent Maroon */
+    --accent: 357 67% 38%;
+    /* Accent Maroon */
     --accent-foreground: 30 33% 94%;
 
     --destructive: 0 84% 60%;
@@ -37,18 +41,19 @@ All colors MUST be HSL.
     --input: 30 20% 88%;
     --ring: 357 67% 32%;
 
-    --radius: 0rem;  /* Editorial sharp corners */
-    
+    --radius: 0rem;
+    /* Editorial sharp corners */
+
     /* Custom editorial tokens */
     --maroon: 357 67% 32%;
     --maroon-dark: 357 67% 25%;
     --cream: 30 33% 94%;
     --cream-dark: 30 20% 88%;
-    
+
     /* Typography scale */
     --font-display: 'Syne', sans-serif;
     --font-body: 'Inter', sans-serif;
-    
+
     /* Transitions */
     --transition-smooth: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     --transition-fast: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
@@ -72,23 +77,28 @@ All colors MUST be HSL.
 
   .dark {
     /* Dark mode uses same editorial theme */
-    --background: 0 0% 10%;
+    --background: 357 67% 25%;
+    /* maroon-dark */
     --foreground: 30 33% 94%;
+    --maroon-light: 357 100% 16%;
 
-    --card: 0 0% 10%;
+    --card: 357 67% 25%;
     --card-foreground: 30 33% 94%;
 
-    --popover: 0 0% 10%;
+    --popover: 357 67% 25%;
     --popover-foreground: 30 33% 94%;
 
-    --primary: 357 67% 45%;
-    --primary-foreground: 30 33% 94%;
+    --primary: 30 33% 94%;
+    /* Cream text for dark mode */
+    --primary-foreground: 357 67% 25%;
+    /* Maroon text on cream buttons */
 
-    --secondary: 0 0% 15%;
+    --secondary: 357 67% 20%;
     --secondary-foreground: 30 33% 94%;
 
-    --muted: 0 0% 15%;
-    --muted-foreground: 30 20% 70%;
+    --muted: 357 50% 20%;
+    --muted-foreground: 30 20% 80%;
+    /* Lighter cream for muted text */
 
     --accent: 357 67% 45%;
     --accent-foreground: 30 33% 94%;
@@ -99,7 +109,7 @@ All colors MUST be HSL.
     --border: 357 67% 32%;
     --input: 0 0% 15%;
     --ring: 357 67% 45%;
-    
+
     --maroon: 357 67% 45%;
     --maroon-dark: 357 67% 38%;
     --cream: 30 33% 94%;
@@ -117,8 +127,13 @@ All colors MUST be HSL.
     font-family: var(--font-body);
     overflow-x: hidden;
   }
-  
-  h1, h2, h3, h4, h5, h6 {
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     font-family: var(--font-display);
     font-weight: 700;
   }
@@ -128,35 +143,127 @@ All colors MUST be HSL.
   .text-display {
     font-family: var(--font-display);
   }
-  
+
   .text-body {
     font-family: var(--font-body);
   }
-  
+
   /* Editorial rotational text */
   .rotate-text-90 {
     writing-mode: vertical-rl;
     text-orientation: mixed;
   }
-  
+
   /* Smooth transitions */
   .transition-smooth {
     transition: var(--transition-smooth);
   }
-  
+
   .transition-fast {
     transition: var(--transition-fast);
   }
-  
+
   /* Editorial spacing */
   .editorial-spacing {
     letter-spacing: -0.02em;
   }
-  
+
   .microtext {
     font-size: 0.65rem;
     letter-spacing: 0.1em;
     text-transform: uppercase;
     font-weight: 500;
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: hsl(var(--background));
+}
+
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--primary) / 0.3);
+  border-radius: 0px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--primary) / 0.8);
+}
+
+/* Luxurious Animations */
+@layer utilities {
+  @keyframes fade-in-up {
+    0% {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes fade-in {
+    0% {
+      opacity: 0;
+    }
+
+    100% {
+      opacity: 1;
+    }
+  }
+
+  @keyframes scale-in {
+    0% {
+      opacity: 0;
+      transform: scale(0.95);
+    }
+
+    100% {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  .animate-fade-in-up {
+    animation: fade-in-up 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  .animate-fade-in {
+    animation: fade-in 1s ease-out forwards;
+  }
+
+  .animate-scale-in {
+    animation: scale-in 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  /* Stagger delays */
+  .delay-100 {
+    animation-delay: 100ms;
+  }
+
+  .delay-200 {
+    animation-delay: 200ms;
+  }
+
+  .delay-300 {
+    animation-delay: 300ms;
+  }
+
+  .delay-400 {
+    animation-delay: 400ms;
+  }
+
+  .delay-500 {
+    animation-delay: 500ms;
+  }
+
+  .delay-700 {
+    animation-delay: 700ms;
   }
 }

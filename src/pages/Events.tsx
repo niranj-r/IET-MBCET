@@ -41,7 +41,7 @@ const Events = () => {
       <Navigation />
 
       {/* Hero */}
-      <section className="pt-32 pb-16 md:pt-40 md:pb-24 border-b-4 border-primary">
+      <section className="pt-32 pb-16 md:pt-40 md:pb-24 border-b-4 border-primary animate-fade-in-up">
         <div className="max-w-7xl mx-auto px-6">
           <div className="microtext text-primary mb-6">IET MBCET EVENTS</div>
           <h1 className="font-display font-bold text-6xl md:text-8xl lg:text-9xl text-primary leading-none">
@@ -51,7 +51,7 @@ const Events = () => {
       </section>
 
       {/* Filters */}
-      <section className="py-6 border-b border-primary/20">
+      <section className="py-6 border-b border-primary/20 animate-fade-in delay-200">
         <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row md:items-center justify-between gap-4">
 
           {/* Search */}
@@ -184,7 +184,7 @@ const Events = () => {
       </section>
 
       {/* Events */}
-      <section className="py-16">
+      <section className="py-16 animate-fade-in-up delay-300">
         <div className="max-w-7xl mx-auto px-6">
           {filteredEvents.length === 0 ? (
             <div className="text-center py-24 text-xl text-foreground/60">

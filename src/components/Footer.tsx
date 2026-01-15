@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
-import { Instagram, Linkedin, Mail, MapPin } from "lucide-react";
+import { Instagram, Linkedin, Mail, MapPin, Facebook } from "lucide-react";
+import { ModeToggle } from "@/components/mode-toggle";
 
 const Footer = () => {
   return (
@@ -60,7 +61,7 @@ const Footer = () => {
             <h3 className="font-display font-bold text-lg mb-4">Follow Us</h3>
             <div className="flex gap-4">
               <a
-                href="https://instagram.com"
+                href="https://www.instagram.com/ietmbcet"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-10 h-10 border border-primary-foreground/30 flex items-center justify-center hover:bg-primary-foreground hover:text-primary transition-fast"
@@ -69,7 +70,7 @@ const Footer = () => {
                 <Instagram size={18} />
               </a>
               <a
-                href="https://linkedin.com"
+                href="https://www.linkedin.com/company/iet-mbcet"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-10 h-10 border border-primary-foreground/30 flex items-center justify-center hover:bg-primary-foreground hover:text-primary transition-fast"
@@ -77,6 +78,20 @@ const Footer = () => {
               >
                 <Linkedin size={18} />
               </a>
+              <a
+                href="https://www.facebook.com/ietmbcet/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-10 h-10 border border-primary-foreground/30 flex items-center justify-center hover:bg-primary-foreground hover:text-primary transition-fast"
+                aria-label="Facebook"
+              >
+                <Facebook size={18} />
+              </a>
+            </div>
+
+            <div className="mt-8">
+              <h3 className="font-display font-bold text-lg mb-4">Theme</h3>
+              <ModeToggle />
             </div>
           </div>
         </div>

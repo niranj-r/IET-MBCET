@@ -11,10 +11,20 @@ const Team = () => {
   const teamMembers = {
     2026: [
       {
+        name: "Ms. Soumya A V",
+        role: "Chairperson",
+        department: "Computer Science & Engineering Artificial Intelligence",
+        category: "Core Team",
+        image: "/Team/26/Soumya.svg",
+        linkedin: "https://www.linkedin.com/in/soumya-a-v-61346661",
+        instagram: "https://www.instagram.com/soumyanirudh",
+        email: "soumyanirudh83@gmail.com",
+      },
+      {
         name: "Johan S Varughese",
         role: "Chairperson",
         department: "Computer Science & Engineering Artificial Intelligence",
-        category: "Coordinators",
+        category: "Core Team",
         image: "/Team/26/Johan.svg",
         linkedin: "https://www.linkedin.com/in/johan-s-varughese",
         instagram: "https://www.instagram.com/_jo.varkey_",
@@ -24,27 +34,27 @@ const Team = () => {
         name: "V. S. Sabarinath",
         role: "Vice Chairperson",
         department: "Mechanical Engineering",
-        category: "Coordinators",
+        category: "Core Team",
         image: "/Team/26/Sabarinath.svg",
-        linkedin: "",
-        instagram: "https://www.instagram.com/",
-        email: "",
+        linkedin: "https://www.linkedin.com/in/vssabarinath/",
+        instagram: "https://www.instagram.com/sabarinath31._._/",
+        email: "vssabarinath2005@gmail.com",
       },
       {
         name: "Jayasree G Kalkura",
         role: "Secretary",
         department: "Electrical Engineering",
-        category: "Executive Committee",
+        category: "Core Team",
         image: "/Team/26/Jayasree.svg",
-        linkedin: "",
+        linkedin: "https://www.linkedin.com/in/jayasreegkalkura",
         instagram: "https://www.instagram.com/",
-        email: "",
+        email: "jayasreegk05@gmail.com",
       },
       {
         name: "Antony Vijay",
         role: "Treasurer",
         department: "Mechanical Engineering",
-        category: "Executive Committee",
+        category: "Core Team",
         image: "/Team/26/Antony.svg",
         linkedin: "",
         instagram: "https://www.instagram.com/",
@@ -66,9 +76,9 @@ const Team = () => {
         department: "Computer Science & Engineering",
         category: "Design Team",
         image: "/Team/26/Daliya.svg",
-        linkedin: "",
-        instagram: "https://www.instagram.com/",
-        email: "",
+        linkedin: "https://www.linkedin.com/in/daliya-saji-john-b0bbb9327",
+        instagram: "https://www.instagram.com/d_s_j_chronicles",
+        email: "daliyasajijohn.b24cs1124@mbcet.ac.in",
       },
       {
         name: "Emil Beny",
@@ -76,9 +86,9 @@ const Team = () => {
         department: "Computer Science & Engineering",
         category: "Design Team",
         image: "/Team/26/Emil.svg",
-        linkedin: "",
-        instagram: "https://www.instagram.com/",
-        email: "",
+        linkedin: "https://www.linkedin.com/in/emil-benny-19a622327",
+        instagram: "https://www.instagram.com/_aemil_ius",
+        email: "emilbenny.b24cs1128@mbcet.ac.in",
       },
       {
         name: "Amritha",
@@ -96,9 +106,9 @@ const Team = () => {
         department: "Mechanical Engineering",
         category: "PR & Content",
         image: "/Team/26/Abhaya.svg",
-        linkedin: "",
-        instagram: "https://www.instagram.com/",
-        email: "",
+        linkedin: "https://www.linkedin.com/in/abhaya-saiju-80877635b",
+        instagram: "https://www.instagram.com/abhayaeee_",
+        email: "abhayasaiju07@gmail.com",
       },
       {
         name: "Krishnendu K V",
@@ -106,9 +116,9 @@ const Team = () => {
         department: "Civil Engineering",
         category: "PR & Content",
         image: "/Team/26/Krishnendu.svg",
-        linkedin: "",
-        instagram: "https://www.instagram.com/",
-        email: "",
+        linkedin: "https://www.linkedin.com/in/krishnendu-kv-33a3363a6/",
+        instagram: "https://www.instagram.com/krishnendu_kv_",
+        email: "kvkrishnendu07@gmail.com",
       },
       {
         name: "Shreyas Jayakrishnan",
@@ -116,9 +126,9 @@ const Team = () => {
         department: "Mechanical Engineering",
         category: "Outreach",
         image: "/Team/26/Shreyas.svg",
-        linkedin: "",
-        instagram: "https://www.instagram.com/",
-        email: "",
+        linkedin: "https://www.linkedin.com/in/shreyas-jkps/",
+        instagram: "https://www.instagram.com/shreyas.jkps",
+        email: "shreyas.jkps@gmail.com",
       },
       {
         name: "Nadha Shine",
@@ -126,9 +136,9 @@ const Team = () => {
         department: "Mechanical Engineering",
         category: "Outreach",
         image: "/Team/26/Nadha.svg",
-        linkedin: "",
-        instagram: "https://www.instagram.com/",
-        email: "",
+        linkedin: "https://www.linkedin.com/in/nadha-shine-82538b3a6",
+        instagram: "https://www.instagram.com/_ zera_x_",
+        email: "nadhalija@gmail.com",
       },
       {
         name: "Aathil Muhammed S",
@@ -164,7 +174,7 @@ const Team = () => {
       <Navigation />
 
       {/* Hero */}
-      <section className="pt-32 pb-16 md:pt-40 md:pb-24 border-b-4 border-primary">
+      <section className="pt-32 pb-16 md:pt-40 md:pb-24 border-b-4 border-primary animate-fade-in-up">
         <div className="max-w-7xl mx-auto px-6">
           <div className="relative">
             <div className="microtext text-primary mb-6">IET MBCET TEAM</div>
@@ -180,7 +190,7 @@ const Team = () => {
       </section>
 
       {/* Year Selector */}
-      <section className="py-12 border-b border-primary/20">
+      <section className="py-12 border-b border-primary/20 animate-fade-in delay-200">
         <div className="max-w-7xl mx-auto px-6">
           <div className="microtext text-foreground/60 mb-4">SELECT YEAR</div>
           <div className="flex flex-wrap gap-3">
@@ -201,7 +211,7 @@ const Team = () => {
       </section>
 
       {/* Team Members by Category */}
-      <section className="py-16">
+      <section className="py-16 animate-fade-in-up delay-300">
         <div className="max-w-7xl mx-auto px-6">
           {categories.map((category) => {
             const members = getMembersByCategory(category);

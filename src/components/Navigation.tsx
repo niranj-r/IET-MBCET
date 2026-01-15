@@ -28,7 +28,7 @@ const Navigation = () => {
   const isActive = (path: string) => location.pathname === path;
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-background border-b border-primary">
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-[#F5EDE4] border-b border-primary">
       <div className="max-w-7xl mx-auto px-6 py-4">
         <div className="flex items-center justify-between">
 
@@ -56,7 +56,7 @@ const Navigation = () => {
                     to={link.to}
                     className={`font-body font-medium relative transition-smooth ${location.pathname.startsWith("/events")
                       ? "text-primary"
-                      : "text-foreground hover:text-primary"
+                      : "text-[#1a1a1a] hover:text-primary"
                       }`}
                   >
                     Events
@@ -66,16 +66,16 @@ const Navigation = () => {
                   </Link>
 
                   {isEventsDropdownOpen && (
-                    <div className="absolute top-full left-0 mt-2 w-48 bg-background border-2 border-primary/20 shadow-lg z-50 animate-fade-in">
+                    <div className="absolute top-full left-0 mt-2 w-48 bg-[#F5EDE4] border-2 border-primary/20 shadow-lg z-50 animate-fade-in">
                       <div className="py-2">
-                        <div className="px-4 py-2 microtext text-foreground/60">
+                        <div className="px-4 py-2 microtext text-[#1a1a1a]/60">
                           SELECT YEAR
                         </div>
                         {years.map((year) => (
                           <Link
                             key={year}
                             to={`/events/${year}`}
-                            className="block px-4 py-2 text-foreground hover:bg-primary/10 hover:text-primary font-medium transition-smooth"
+                            className="block px-4 py-2 text-[#1a1a1a] hover:bg-primary/10 hover:text-primary font-medium transition-smooth"
                             onClick={() => setIsEventsDropdownOpen(false)}
                           >
                             {year}
@@ -92,7 +92,7 @@ const Navigation = () => {
                   to={link.to}
                   className={`font-body font-medium relative transition-smooth ${isActive(link.to)
                     ? "text-primary"
-                    : "text-foreground hover:text-primary"
+                    : "text-[#1a1a1a] hover:text-primary"
                     }`}
                 >
                   {link.label}
@@ -121,12 +121,12 @@ const Navigation = () => {
 
         {/* Mobile Menu */}
         {isOpen && (
-          <div className="md:hidden mt-4 pb-4 pt-4 border-t border-primary/20 animate-fade-in">
+          <div className="md:hidden mt-4 pb-4 pt-4 border-t border-primary/20 animate-fade-in text-[#1a1a1a]">
             <div className="flex flex-col gap-4">
               {/* Home */}
               <Link
                 to="/"
-                className={`font-body py-2 ${isActive("/") ? "text-primary" : "text-foreground"
+                className={`font-body py-2 ${isActive("/") ? "text-primary" : "text-[#1a1a1a]"
                   }`}
                 onClick={() => setIsOpen(false)}
               >
@@ -135,7 +135,7 @@ const Navigation = () => {
 
               {/* Events Year List */}
               <div>
-                <div className="microtext text-foreground/60 mb-2">
+                <div className="microtext text-[#1a1a1a]/60 mb-2">
                   EVENTS BY YEAR
                 </div>
                 {years.map((year) => (
@@ -145,7 +145,7 @@ const Navigation = () => {
                     onClick={() => setIsOpen(false)}
                     className={`block py-2 font-body ${location.pathname === `/events/${year}`
                       ? "text-primary"
-                      : "text-foreground"
+                      : "text-[#1a1a1a]"
                       }`}
                   >
                     {year}
@@ -156,7 +156,7 @@ const Navigation = () => {
               {/* Team */}
               <Link
                 to="/team"
-                className={`font-body py-2 ${isActive("/team") ? "text-primary" : "text-foreground"
+                className={`font-body py-2 ${isActive("/team") ? "text-primary" : "text-[#1a1a1a]"
                   }`}
                 onClick={() => setIsOpen(false)}
               >
@@ -166,7 +166,7 @@ const Navigation = () => {
               {/* Contact */}
               <Link
                 to="/contact"
-                className={`font-body py-2 ${isActive("/contact") ? "text-primary" : "text-foreground"
+                className={`font-body py-2 ${isActive("/contact") ? "text-primary" : "text-[#1a1a1a]"
                   }`}
                 onClick={() => setIsOpen(false)}
               >

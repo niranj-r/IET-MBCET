@@ -50,6 +50,7 @@ export default {
         maroon: {
           DEFAULT: "hsl(var(--maroon))",
           dark: "hsl(var(--maroon-dark))",
+          light: "hsl(var(--maroon-light))",
         },
         cream: {
           DEFAULT: "hsl(var(--cream))",
