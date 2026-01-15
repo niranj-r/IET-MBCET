@@ -11,9 +11,9 @@ const Team = () => {
   const teamMembers = {
     2026: [
       {
-        name: "Ms. Soumya A V",
-        role: "Chairperson",
-        department: "Computer Science & Engineering Artificial Intelligence",
+        name: "Dr. Soumya A V",
+        role: "Faculty Advisor",
+        department: "Electrical and Electronics Engineering",
         category: "Core Team",
         image: "/Team/26/Soumya.svg",
         linkedin: "https://www.linkedin.com/in/soumya-a-v-61346661",
@@ -153,6 +153,16 @@ const Team = () => {
     ],
     2025: [
       {
+        name: "Dr. Soumya A V",
+        role: "Faculty Advisor",
+        department: "Electrical and Electronics Engineering",
+        category: "Core Team",
+        image: "/Team/26/Soumya.svg",
+        linkedin: "https://www.linkedin.com/in/soumya-a-v-61346661",
+        instagram: "https://www.instagram.com/soumyanirudh",
+        email: "soumyanirudh83@gmail.com",
+      },
+      {
         name: "Nevin Thomas Thomas",
         role: "Chairperson",
         department: "EEE",
@@ -268,9 +278,7 @@ const Team = () => {
   const currentTeam = teamMembers[selectedYear as keyof typeof teamMembers] || [];
 
   const categories = [
-    "Coordinators",
-    "Executive Committee",
-    "Technical Team",
+    "Core Team",
     "Design Team",
     "PR & Content",
     "Outreach",

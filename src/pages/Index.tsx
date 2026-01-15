@@ -33,7 +33,7 @@ const Index = () => {
                   </Link>
                 </Button>
                 <Button size="lg" variant="outline" asChild className="font-display font-bold border-2 border-primary">
-                  <Link to="/contact">Connect With Us</Link>
+                  <Link to="https://www.instagram.com/ietmbcet">Connect With Us</Link>
                 </Button>
               </div>
             </div>

@@ -23,6 +23,7 @@ All colors MUST be HSL.
     --primary: 357 67% 32%;
     /* Deep Maroon #8E1F24 */
     --primary-foreground: 30 33% 94%;
+    --bg-primary: 30 33% 94%;
 
     --secondary: 30 33% 94%;
     --secondary-foreground: 357 67% 32%;

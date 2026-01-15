@@ -12,22 +12,24 @@ const Events = () => {
   const { year } = useParams();
   const currentYear = new Date().getFullYear();
 
-  const [selectedYear, setSelectedYear] = useState<number>(
-    parseInt(year || currentYear.toString())
-  );
+  const [selectedYear, setSelectedYear] = useState<number | "ALL">("ALL"); // Default to ALL to show events initially if no year param
   const [selectedStatus, setSelectedStatus] = useState<EventStatus>("ALL");
   const [searchQuery, setSearchQuery] = useState("");
   const [filtersOpen, setFiltersOpen] = useState(false);
 
   useEffect(() => {
-    if (year) setSelectedYear(parseInt(year));
+    if (year) {
+      setSelectedYear(parseInt(year));
+    } else {
+      setSelectedYear("ALL"); // Default to ALL when visiting /events directly
+    }
   }, [year]);
 
-  const years = [currentYear - 1, currentYear - 2, currentYear - 3];
+  const years = [currentYear, currentYear - 1, currentYear - 2, currentYear - 3];
 
   // filtering
   const filteredEvents = events.filter((event) => {
-    const matchesYear = event.year === selectedYear;
+    const matchesYear = selectedYear === "ALL" || event.year === selectedYear;
     const matchesStatus = selectedStatus === "ALL" || event.status === selectedStatus;
     const matchesSearch =
       event.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
@@ -51,7 +53,7 @@ const Events = () => {
       </section>
 
       {/* Filters */}
-      <section className="py-6 border-b border-primary/20 animate-fade-in delay-200">
+      <section className="py-6 border-b border-primary/20 animate-fade-in delay-200 relative z-20">
         <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row md:items-center justify-between gap-4">
 
           {/* Search */}
@@ -79,12 +81,21 @@ const Events = () => {
             </Button>
 
             {filtersOpen && (
-              <div className="absolute right-0 mt-2 w-72 bg-background border border-primary/30 shadow-xl p-5 z-50 rounded-none animate-fade-in">
+              <div className="absolute right-0 mt-2 w-72 bg-background border border-primary/30 shadow-xl p-5 z-[100] rounded-none animate-fade-in">
 
                 {/* Year */}
                 <div className="mb-6">
                   <div className="microtext text-foreground/60 mb-3">YEAR</div>
                   <div className="flex flex-wrap gap-2">
+                    <button
+                      onClick={() => setSelectedYear("ALL")}
+                      className={`px-4 py-2 border text-sm ${selectedYear === "ALL"
+                        ? "bg-primary text-primary-foreground border-primary"
+                        : "border-primary/40 text-primary hover:bg-primary/10"
+                        }`}
+                    >
+                      ALL
+                    </button>
                     {years.map((yr) => (
                       <button
                         key={yr}
@@ -126,15 +137,15 @@ const Events = () => {
         </div>
 
         {/* Active Filters Display */}
-        {(selectedStatus !== "ALL" || searchQuery || selectedYear !== currentYear) && (
+        {(selectedStatus !== "ALL" || searchQuery || selectedYear !== "ALL") && (
           <div className="max-w-7xl mx-auto px-6 mt-4 flex flex-wrap items-center gap-3">
 
             {/* Year filter tag */}
-            {selectedYear !== currentYear && (
+            {selectedYear !== "ALL" && (
               <div className="px-4 py-1 border border-primary/40 text-primary text-sm flex items-center gap-2">
                 Year: {selectedYear}
                 <button
-                  onClick={() => setSelectedYear(currentYear)}
+                  onClick={() => setSelectedYear("ALL")}
                   className="text-primary hover:text-accent"
                 >
                   ×
@@ -172,7 +183,7 @@ const Events = () => {
             <button
               onClick={() => {
                 setSelectedStatus("ALL");
-                setSelectedYear(currentYear);
+                setSelectedYear("ALL");
                 setSearchQuery("");
               }}
               className="microtext text-accent hover:underline ml-2"
@@ -184,7 +195,7 @@ const Events = () => {
       </section>
 
       {/* Events */}
-      <section className="py-16 animate-fade-in-up delay-300">
+      <section className="py-16 animate-fade-in-up delay-300 relative z-10">
         <div className="max-w-7xl mx-auto px-6">
           {filteredEvents.length === 0 ? (
             <div className="text-center py-24 text-xl text-foreground/60">

@@ -49,8 +49,8 @@ const Footer = () => {
               </div>
               <div className="flex items-center gap-2">
                 <Mail size={16} />
-                <a href="mailto:iet@mbcet.ac.in" className="text-sm text-primary-foreground/80 hover:text-primary-foreground transition-fast">
-                  iet@mbcet.ac.in
+                <a href="mailto:ietmbcet@mbcet.ac.in" className="text-sm text-primary-foreground/80 hover:text-primary-foreground transition-fast">
+                  ietmbcet@mbcet.ac.in
                 </a>
               </div>
             </div>

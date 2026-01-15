@@ -19,10 +19,20 @@ const Contact = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+
+    const { name, email, phone, subject, message } = formData;
+
+    // Construct email body
+    const body = `Name: ${name}%0D%0AEmail: ${email}%0D%0APhone: ${phone}%0D%0A%0D%0AMessage:%0D%0A${message}`;
+
+    // trigger mailto
+    window.location.href = `mailto:ietmbcet@mbcet.ac.in?subject=${encodeURIComponent(subject)}&body=${body}`;
+
     toast({
-      title: "Message Sent!",
-      description: "We'll get back to you soon.",
+      title: "Opening Email Client",
+      description: "Please send the email from your default client to complete submission.",
     });
+
     setFormData({ name: "", email: "", phone: "", subject: "", message: "" });
   };
 
@@ -171,10 +181,10 @@ const Contact = () => {
                     <div>
                       <h3 className="font-display font-bold text-xl text-primary mb-2">Email</h3>
                       <a
-                        href="mailto:iet@mbcet.ac.in"
+                        href="mailto:ietmbcet@mbcet.ac.in"
                         className="text-foreground/80 hover:text-primary transition-fast"
                       >
-                        iet@mbcet.ac.in
+                        ietmbcet@mbcet.ac.in
                       </a>
                     </div>
                   </div>
@@ -187,10 +197,10 @@ const Contact = () => {
                     <div>
                       <h3 className="font-display font-bold text-xl text-primary mb-2">Phone</h3>
                       <a
-                        href="tel:+919876543210"
+                        href="tel:+919746241841"
                         className="text-foreground/80 hover:text-primary transition-fast"
                       >
-                        +91 98765 43210
+                        +91 97462 41841
                       </a>
                     </div>
                   </div>
