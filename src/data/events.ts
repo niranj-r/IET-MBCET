@@ -618,7 +618,7 @@ export const events: Event[] = [
         organizers: ["IET MBCET"],
         capacity: "Not specified",
         registration: "Closed",
-        image: "../event-data/30.jpg"
+        image: "../event-data/30.jpeg"
     },
     {
         id: 31,
@@ -677,7 +677,7 @@ export const events: Event[] = [
         organizers: ["IET MBCET"],
         capacity: "Not specified",
         registration: "Closed",
-        image: ""
+        image: "../event-data/33.jpeg"
     },
     {
         id: 34,
@@ -716,7 +716,7 @@ export const events: Event[] = [
         organizers: ["IET MBCET"],
         capacity: "Not specified",
         registration: "Closed",
-        image: ""
+        image: "../event-data/35.jpg"
     },
     {
         id: 36,
@@ -724,7 +724,7 @@ export const events: Event[] = [
         date: "21 FEB 2025 - 22 FEB 2025",
         time: "48-hour event (estimated)",
         venue: "MBCET Campus",
-        status: "UPCOMING",
+        status: "COMPLETED",
         category: "COMPETITION",
         year: 2025,
         description: "A hackathon-style event focusing on sustainable engineering solutions and green technology innovations.",
@@ -735,7 +735,7 @@ export const events: Event[] = [
         organizers: ["IET MBCET"],
         capacity: "Not specified",
         registration: "Completed",
-        image: ""
+        image: "../event-data/36.jpeg"
     },
     {
         id: 37,
@@ -743,7 +743,7 @@ export const events: Event[] = [
         date: "30 APR 2025",
         time: "Not specified",
         venue: "MBCET Campus",
-        status: "UPCOMING",
+        status: "COMPLETED",
         category: "EXHIBITION",
         year: 2025,
         description: "A technical exhibition showcasing innovative projects and engineering designs from the on-campus community.",
@@ -754,6 +754,149 @@ export const events: Event[] = [
         organizers: ["IET MBCET"],
         capacity: "Not specified",
         registration: "Completed",
+        image: "../event-data/37.jpeg"
+    },
+    {
+        id: 38,
+        title: "40-Hour Bootcamp on Drone / UAS Technology",
+        date: "23 JUN 2025 - 27 JUN 2025",
+        time: "40 Hours (Over 5 Days)",
+        venue: "College of Engineering Trivandrum",
+        status: "COMPLETED",
+        category: "BOOTCAMP",
+        year: 2025,
+        description: "An experiential learning program organized by NIT Calicut in collaboration with IET On Campus CET and MBCET. The bootcamp provided over 140 participants with a structured blend of theory and hands-on practice in modern UAS technology.",
+        highlights: [
+            "Aerodynamics and glider design theory",
+            "Hands-on drone assembly and flying sessions",
+            "Simulations and technical assessments",
+            "Over 140 learners engaged"
+        ],
+        organizers: ["NIT Calicut", "IET On Campus CET", "IET MBCET"],
+        capacity: "140+ participants",
+        registration: "Closed",
         image: ""
+    },
+    {
+        id: 39,
+        title: "Bag the Plastics! – Online Ideathon 2025",
+        date: "03 JUL 2025",
+        time: "Not specified",
+        venue: "Online",
+        status: "COMPLETED",
+        category: "IDEATHON",
+        year: 2025,
+        description: "Organized on International Plastic Bag Free Day, this ideathon encouraged students to propose innovative solutions to eliminate plastic bag waste, aligned with UN Sustainable Development Goals.",
+        highlights: [
+            "Focus on sustainability and UN SDGs",
+            "Winner: Aaron S Varghese for 'Bhoomibags'",
+            "Runner-up: Vasundhara S R"
+        ],
+        organizers: ["IET MBCET"],
+        capacity: "10 participants",
+        registration: "Closed",
+        image: "../event-data/39.jpeg"
+    },
+    {
+        id: 40,
+        title: "TinkerIET 2025",
+        date: "19 JUL 2025",
+        time: "Full-day",
+        venue: "MBCET Campus",
+        status: "COMPLETED",
+        category: "IMMERSIVE PROGRAM",
+        year: 2025,
+        description: "A full-day immersive orientation program exclusively for second-year students to introduce them to innovation culture, professional exploration, and the core values of IET.",
+        highlights: [
+            "Immersive innovation workshops",
+            "Introduction to IET on-campus culture",
+            "Exclusive for second-year engineering students"
+        ],
+        organizers: ["IET MBCET"],
+        capacity: "Second-year students only",
+        registration: "Closed",
+        image: "../event-data/40.jpeg"
+    },
+    {
+        id: 41,
+        title: "Demystifying the Future: IT Industry Trends",
+        date: "19 JUL 2025",
+        time: "Not specified",
+        venue: "MBCET Campus",
+        status: "COMPLETED",
+        category: "TALK SESSION",
+        year: 2025,
+        description: "A special career-oriented talk session titled 'Demystifying the Future – Recent Trends and Career Trajectories in the IT Industry' delivered during the TinkerIET 2025 program.",
+        highlights: [
+            "Speaker: Mr. Vaibhav K (Senior Software Engineer, EY)",
+            "Insights into IT industry career paths",
+            "Analysis of recent technology trends"
+        ],
+        organizers: ["IET MBCET"],
+        capacity: "Not specified",
+        registration: "Closed",
+        image: "../event-data/41.jpeg"
+    },
+    {
+        id: 42,
+        title: "College Heats ’25",
+        date: "10 OCT 2025",
+        time: "Not specified",
+        venue: "MBCET Campus",
+        status: "COMPLETED",
+        category: "COMPETITION",
+        year: 2025,
+        description: "A flagship presentation competition organized by IET MBCET to foster articulation, technical communication, and student confidence.",
+        highlights: [
+            "Focus on creativity and articulation",
+            "Winner: Elvis Mathew Olickal (S5 EL)",
+            "Runner-up: Jowin Thomas Alex (S1 CT)"
+        ],
+        organizers: ["IET MBCET"],
+        capacity: "Not specified",
+        registration: "Closed",
+        image: "../event-data/42.jpeg"
+    },
+    {
+        id: 43,
+        title: "IET AGM ’25 & Award Function",
+        date: "12 DEC 2025",
+        time: "Not specified",
+        venue: "Trivandrum",
+        status: "COMPLETED",
+        category: "MEETING",
+        year: 2025,
+        description: "The 2025 Annual General Meeting where the chapter's yearly progress was reviewed and outstanding contributors were recognized with awards.",
+        highlights: [
+            "Award: Best Dynamic Chapter (IET KKLN)",
+            "Award: Best Chairperson - Nevin Thomas Thomas",
+            "Award: Best Volunteer - V S Sabarinath (S5 ME)",
+            "Award: Best Organizer - Johan S Varughese (S5 CT)"
+        ],
+        organizers: ["IET MBCET", "IET KKLN"],
+        capacity: "Not specified",
+        registration: "Closed",
+        image: ""
+    },
+    {
+        id: 44,
+        title: "Santa’s Resume: Gift Your Santa a Career This Christmas",
+        date: "25 DEC 2025", // Inferred from Christmas theme and year context
+        time: "Not specified",
+        venue: "Online Submission",
+        status: "COMPLETED",
+        category: "COMPETITION",
+        year: 2026,
+        description: "A creative resume-building competition where participants represent 'Santa Claus' as a professional character. The challenge involves crafting a humorous yet professional profile summary, work experience, and skills list tailored to Santa, all within a festive Christmas theme.",
+        highlights: [
+            "Light-hearted and playful professional branding",
+            "Mandatory sections: Profile Summary, Skills, Work Experience, and Hobbies",
+            "Strict policy against AI-generated content to encourage original imagination",
+            "Design flexibility using tools like Canva and Figma"
+        ],
+        organizers: ["IET MBCET"],
+        capacity: "Not specified",
+        registration: "Closed",
+        image: "../event-data/44.jpg"
     },
 ];

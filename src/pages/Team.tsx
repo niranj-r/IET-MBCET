@@ -4,53 +4,141 @@ import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 
 const Team = () => {
-  const [selectedYear, setSelectedYear] = useState(2024);
+  const [selectedYear, setSelectedYear] = useState(2026);
 
-  const years = [2024, 2023, 2022];
+  const years = [2026, 2025, 2024];
 
   const teamMembers = {
-    2024: [
+    2026: [
       {
-        name: "Adithya Raj",
-        role: "President",
-        department: "Computer Science",
+        name: "Johan S Varughese",
+        role: "Chairperson",
+        department: "Computer Science & Engineering Artificial Intelligence",
         category: "Coordinators",
-        image: "AR",
+        image: "/Team/26/Johan.svg",
+        linkedin: "https://www.linkedin.com/in/johan-s-varughese",
+        instagram: "https://www.instagram.com/_jo.varkey_",
+        email: "mail2joshvarkey@gmail.com",
       },
       {
-        name: "Sneha Krishnan",
-        role: "Vice President",
-        department: "Electronics",
+        name: "V. S. Sabarinath",
+        role: "Vice Chairperson",
+        department: "Mechanical Engineering",
         category: "Coordinators",
-        image: "SK",
+        image: "/Team/26/Sabarinath.svg",
+        linkedin: "",
+        instagram: "https://www.instagram.com/",
+        email: "",
       },
       {
-        name: "Rahul Menon",
-        role: "Technical Head",
-        department: "Computer Science",
+        name: "Jayasree G Kalkura",
+        role: "Secretary",
+        department: "Electrical Engineering",
         category: "Executive Committee",
-        image: "RM",
+        image: "/Team/26/Jayasree.svg",
+        linkedin: "",
+        instagram: "https://www.instagram.com/",
+        email: "",
       },
       {
-        name: "Priya Thomas",
-        role: "Events Head",
-        department: "Mechanical",
+        name: "Antony Vijay",
+        role: "Treasurer",
+        department: "Mechanical Engineering",
         category: "Executive Committee",
-        image: "PT",
+        image: "/Team/26/Antony.svg",
+        linkedin: "",
+        instagram: "https://www.instagram.com/",
+        email: "",
       },
       {
-        name: "Arun Kumar",
-        role: "Design Lead",
-        department: "Computer Science",
+        name: "Niranj",
+        role: "Design Team Member",
+        department: "Computer Science & Engineering",
         category: "Design Team",
-        image: "AK",
+        image: "/Team/26/Niranj.svg",
+        linkedin: "https://www.linkedin.com/in/niranj-r/",
+        instagram: "https://www.instagram.com/cre.a.tor_nj",
+        email: "niranj.njai@gmail.com",
       },
       {
-        name: "Meera Nair",
-        role: "Content Lead",
-        department: "Electronics",
+        name: "Daliya Saji John",
+        role: "Design Team Member",
+        department: "Computer Science & Engineering",
         category: "Design Team",
-        image: "MN",
+        image: "/Team/26/Daliya.svg",
+        linkedin: "",
+        instagram: "https://www.instagram.com/",
+        email: "",
+      },
+      {
+        name: "Emil Beny",
+        role: "Design Team Member",
+        department: "Computer Science & Engineering",
+        category: "Design Team",
+        image: "/Team/26/Emil.svg",
+        linkedin: "",
+        instagram: "https://www.instagram.com/",
+        email: "",
+      },
+      {
+        name: "Amritha",
+        role: "PR & Content Team Member",
+        department: "Not specified",
+        category: "PR & Content",
+        image: "/Team/26/Amritha.svg",
+        linkedin: "",
+        instagram: "https://www.instagram.com/",
+        email: "",
+      },
+      {
+        name: "Abhaya Saiju",
+        role: "PR & Content Team Member",
+        department: "Mechanical Engineering",
+        category: "PR & Content",
+        image: "/Team/26/Abhaya.svg",
+        linkedin: "",
+        instagram: "https://www.instagram.com/",
+        email: "",
+      },
+      {
+        name: "Krishnendu K V",
+        role: "PR & Content Team Member",
+        department: "Civil Engineering",
+        category: "PR & Content",
+        image: "/Team/26/Krishnendu.svg",
+        linkedin: "",
+        instagram: "https://www.instagram.com/",
+        email: "",
+      },
+      {
+        name: "Shreyas Jayakrishnan",
+        role: "Outreach Team Member",
+        department: "Mechanical Engineering",
+        category: "Outreach",
+        image: "/Team/26/Shreyas.svg",
+        linkedin: "",
+        instagram: "https://www.instagram.com/",
+        email: "",
+      },
+      {
+        name: "Nadha Shine",
+        role: "Outreach Team Member",
+        department: "Mechanical Engineering",
+        category: "Outreach",
+        image: "/Team/26/Nadha.svg",
+        linkedin: "",
+        instagram: "https://www.instagram.com/",
+        email: "",
+      },
+      {
+        name: "Aathil Muhammed S",
+        role: "Outreach Team Member",
+        department: "Mechanical Engineering",
+        category: "Outreach",
+        image: "/Team/26/Aathil.svg",
+        linkedin: "",
+        instagram: "https://www.instagram.com/",
+        email: "",
       },
     ],
   };
@@ -62,6 +150,8 @@ const Team = () => {
     "Executive Committee",
     "Technical Team",
     "Design Team",
+    "PR & Content",
+    "Outreach",
     "Volunteers",
   ];
 
@@ -98,11 +188,10 @@ const Team = () => {
               <button
                 key={year}
                 onClick={() => setSelectedYear(year)}
-                className={`px-6 py-3 font-display font-bold transition-smooth border-2 ${
-                  selectedYear === year
-                    ? "bg-primary text-primary-foreground border-primary"
-                    : "bg-background text-primary border-primary hover:bg-primary/10"
-                }`}
+                className={`px-6 py-3 font-display font-bold transition-smooth border-2 ${selectedYear === year
+                  ? "bg-primary text-primary-foreground border-primary"
+                  : "bg-background text-primary border-primary hover:bg-primary/10"
+                  }`}
               >
                 {year}
               </button>
@@ -134,9 +223,17 @@ const Team = () => {
                       {/* Member Image Placeholder */}
                       <div className="aspect-square bg-gradient-to-br from-primary/20 to-accent/20 relative overflow-hidden">
                         <div className="absolute inset-0 flex items-center justify-center">
-                          <span className="font-display font-bold text-8xl text-primary/30">
-                            {member.image}
-                          </span>
+                          {member.image.includes("/") ? (
+                            <img
+                              src={member.image}
+                              alt={member.name}
+                              className="w-full h-full object-cover"
+                            />
+                          ) : (
+                            <span className="font-display font-bold text-8xl text-primary/30">
+                              {member.image}
+                            </span>
+                          )}
                         </div>
                       </div>
 
@@ -150,27 +247,37 @@ const Team = () => {
 
                         {/* Social Links */}
                         <div className="flex gap-3 pt-4 border-t border-primary/20">
-                          <a
-                            href="#"
-                            className="w-10 h-10 border border-primary/30 flex items-center justify-center hover:bg-primary hover:text-primary-foreground transition-fast"
-                            aria-label="LinkedIn"
-                          >
-                            <Linkedin size={16} />
-                          </a>
-                          <a
-                            href="#"
-                            className="w-10 h-10 border border-primary/30 flex items-center justify-center hover:bg-primary hover:text-primary-foreground transition-fast"
-                            aria-label="Instagram"
-                          >
-                            <Instagram size={16} />
-                          </a>
-                          <a
-                            href="#"
-                            className="w-10 h-10 border border-primary/30 flex items-center justify-center hover:bg-primary hover:text-primary-foreground transition-fast"
-                            aria-label="Email"
-                          >
-                            <Mail size={16} />
-                          </a>
+                          {member.linkedin && (
+                            <a
+                              href={member.linkedin}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="w-10 h-10 border border-primary/30 flex items-center justify-center hover:bg-primary hover:text-primary-foreground transition-fast"
+                              aria-label="LinkedIn"
+                            >
+                              <Linkedin size={16} />
+                            </a>
+                          )}
+                          {member.instagram && (
+                            <a
+                              href={member.instagram}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="w-10 h-10 border border-primary/30 flex items-center justify-center hover:bg-primary hover:text-primary-foreground transition-fast"
+                              aria-label="Instagram"
+                            >
+                              <Instagram size={16} />
+                            </a>
+                          )}
+                          {member.email && (
+                            <a
+                              href={`mailto:${member.email}`}
+                              className="w-10 h-10 border border-primary/30 flex items-center justify-center hover:bg-primary hover:text-primary-foreground transition-fast"
+                              aria-label="Email"
+                            >
+                              <Mail size={16} />
+                            </a>
+                          )}
                         </div>
                       </div>
                     </div>

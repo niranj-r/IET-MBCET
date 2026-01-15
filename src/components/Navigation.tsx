@@ -54,11 +54,10 @@ const Navigation = () => {
                 >
                   <Link
                     to={link.to}
-                    className={`font-body font-medium relative transition-smooth ${
-                      location.pathname.startsWith("/events")
-                        ? "text-primary"
-                        : "text-foreground hover:text-primary"
-                    }`}
+                    className={`font-body font-medium relative transition-smooth ${location.pathname.startsWith("/events")
+                      ? "text-primary"
+                      : "text-foreground hover:text-primary"
+                      }`}
                   >
                     Events
                     {location.pathname.startsWith("/events") && (
@@ -91,11 +90,10 @@ const Navigation = () => {
                 <Link
                   key={link.to}
                   to={link.to}
-                  className={`font-body font-medium relative transition-smooth ${
-                    isActive(link.to)
-                      ? "text-primary"
-                      : "text-foreground hover:text-primary"
-                  }`}
+                  className={`font-body font-medium relative transition-smooth ${isActive(link.to)
+                    ? "text-primary"
+                    : "text-foreground hover:text-primary"
+                    }`}
                 >
                   {link.label}
                   {isActive(link.to) && (
@@ -128,9 +126,8 @@ const Navigation = () => {
               {/* Home */}
               <Link
                 to="/"
-                className={`font-body py-2 ${
-                  isActive("/") ? "text-primary" : "text-foreground"
-                }`}
+                className={`font-body py-2 ${isActive("/") ? "text-primary" : "text-foreground"
+                  }`}
                 onClick={() => setIsOpen(false)}
               >
                 Home
@@ -146,11 +143,10 @@ const Navigation = () => {
                     key={year}
                     to={`/events/${year}`}
                     onClick={() => setIsOpen(false)}
-                    className={`block py-2 font-body ${
-                      location.pathname === `/events/${year}`
-                        ? "text-primary"
-                        : "text-foreground"
-                    }`}
+                    className={`block py-2 font-body ${location.pathname === `/events/${year}`
+                      ? "text-primary"
+                      : "text-foreground"
+                      }`}
                   >
                     {year}
                   </Link>
@@ -160,9 +156,8 @@ const Navigation = () => {
               {/* Team */}
               <Link
                 to="/team"
-                className={`font-body py-2 ${
-                  isActive("/team") ? "text-primary" : "text-foreground"
-                }`}
+                className={`font-body py-2 ${isActive("/team") ? "text-primary" : "text-foreground"
+                  }`}
                 onClick={() => setIsOpen(false)}
               >
                 Team
@@ -171,9 +166,8 @@ const Navigation = () => {
               {/* Contact */}
               <Link
                 to="/contact"
-                className={`font-body py-2 ${
-                  isActive("/contact") ? "text-primary" : "text-foreground"
-                }`}
+                className={`font-body py-2 ${isActive("/contact") ? "text-primary" : "text-foreground"
+                  }`}
                 onClick={() => setIsOpen(false)}
               >
                 Contact

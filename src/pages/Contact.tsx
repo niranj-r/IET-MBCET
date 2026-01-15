@@ -198,11 +198,15 @@ const Contact = () => {
               </div>
 
               {/* Map */}
-              <div className="mt-12 border-4 border-primary aspect-video bg-gradient-to-br from-primary/10 to-accent/10 flex items-center justify-center">
-                <div className="text-center">
-                  <MapPin size={48} className="text-primary mx-auto mb-4" />
-                  <p className="microtext text-foreground/60">MAP VIEW</p>
-                </div>
+              <div className="mt-12 border-4 border-primary aspect-video bg-gradient-to-br from-primary/10 to-accent/10 flex items-center justify-center overflow-hidden">
+                <iframe
+                  width="100%"
+                  height="100%"
+                  frameBorder="0"
+                  src="https://www.bing.com/maps/embed?h=400&w=800&cp=8.549010~76.938545&lvl=16&typ=d&sty=r&src=SHELL&FORM=MBEDV8"
+                  scrolling="no"
+                  title="Mar Baselios College of Engineering and Technology Map"
+                ></iframe>
               </div>
             </div>
           </div>

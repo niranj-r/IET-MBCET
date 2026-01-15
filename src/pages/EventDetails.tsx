@@ -39,7 +39,7 @@ const EventDetails = () => {
         </div>
         <div className="max-w-7xl mx-auto px-6">
           <Link
-            to="/events"
+            to={`/events/${new Date().getFullYear()}`}
             className="inline-flex items-center gap-2 text-primary-foreground/80 hover:text-primary-foreground mb-8 transition-smooth"
           >
             <ArrowLeft size={20} />
@@ -68,27 +68,7 @@ const EventDetails = () => {
         </div>
       </section>
 
-      {/* Event Image */}
-      <section className="border-b-4 border-primary">
-        <div className="max-w-7xl mx-auto">
-          <div className="aspect-[21/9] bg-gradient-to-br from-primary/20 to-accent/20 relative overflow-hidden">
-            {event.image ? (
-              <img
-                src={event.image}
-                alt={event.title}
-                className="w-full h-full object-cover"
-              />
-            ) : (
-              <div className="absolute inset-0 flex items-center justify-center">
-                <Calendar size={120} className="text-primary/20" />
-              </div>
-            )}
-            <div className="absolute top-8 right-8 px-6 py-3 bg-primary text-primary-foreground microtext font-bold text-lg">
-              {event.status}
-            </div>
-          </div>
-        </div>
-      </section>
+
 
       {/* Content */}
       <section className="py-16 md:py-24">
@@ -138,20 +118,23 @@ const EventDetails = () => {
               </div>
 
               {/* Registration CTA */}
-              <div className="bg-primary text-primary-foreground p-6">
-                <h3 className="font-display font-bold text-2xl mb-4">Interested?</h3>
-                <p className="mb-6 text-primary-foreground/90">
-                  Register now to secure your spot for this event.
-                </p>
-                <Button
-                  variant="secondary"
-                  size="lg"
-                  className="w-full font-display font-bold"
-                  asChild
-                >
-                  <Link to="/contact">Register Now</Link>
-                </Button>
-              </div>
+              {/* Registration CTA */}
+              {event.status !== "COMPLETED" && (
+                <div className="bg-primary text-primary-foreground p-6">
+                  <h3 className="font-display font-bold text-2xl mb-4">Interested?</h3>
+                  <p className="mb-6 text-primary-foreground/90">
+                    Register now to secure your spot for this event.
+                  </p>
+                  <Button
+                    variant="secondary"
+                    size="lg"
+                    className="w-full font-display font-bold"
+                    asChild
+                  >
+                    <Link to="/contact">Register Now</Link>
+                  </Button>
+                </div>
+              )}
 
               {/* Organizers */}
               <div className="border-2 border-primary/20 p-6">

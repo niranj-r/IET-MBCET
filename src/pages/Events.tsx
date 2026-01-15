@@ -23,7 +23,7 @@ const Events = () => {
     if (year) setSelectedYear(parseInt(year));
   }, [year]);
 
-  const years = [currentYear, currentYear - 1, currentYear - 2, currentYear - 3];
+  const years = [currentYear - 1, currentYear - 2, currentYear - 3];
 
   // filtering
   const filteredEvents = events.filter((event) => {
@@ -34,7 +34,7 @@ const Events = () => {
       event.category.toLowerCase().includes(searchQuery.toLowerCase());
 
     return matchesYear && matchesStatus && matchesSearch;
-  });
+  }).sort((a, b) => b.id - a.id);
 
   return (
     <div className="min-h-screen">
@@ -195,7 +195,7 @@ const Events = () => {
               {filteredEvents.map((event) => (
                 <Link
                   key={event.id}
-                  to={`/events/${event.id}`}
+                  to={`/events/details/${event.id}`}
                   className="group border-2 border-primary/20 hover:border-primary transition-smooth overflow-hidden"
                 >
                   <div className="aspect-video bg-gradient-to-br from-primary/20 to-accent/20 relative">
