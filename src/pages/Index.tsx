@@ -273,18 +273,18 @@ const Index = () => {
             {[
               {
                 quote: "IET MBCET has been instrumental in shaping my technical skills and professional network.",
-                name: "Rahul Krishnan",
-                role: "Final Year, CSE"
+                name: "Nevin Thomas",
+                role: "Alumni, IET"
               },
               {
-                quote: "The workshops and events organized by IET have given me practical industry exposure.",
-                name: "Priya Menon",
-                role: "Third Year, ECE"
+                quote: "IET MBCET has been an integral part of my overall development over a period of two years. What begins as participation at the local level gradually evolves into exposure on national and international platforms. The chapter extends growth beyond academics, fostering leadership, communication, and perspective. *IET plays a significant role in shaping character, confidence, and the mindset required to lead with clarity and purpose across any field.*",
+                name: "Sarang",
+                role: "Alumni, IET"
               },
               {
                 quote: "Being part of IET's organizing committee taught me leadership and event management.",
-                name: "Arun Kumar",
-                role: "Alumni, 2023"
+                name: "Anand",
+                role: "Alumni, IET"
               },
             ].map((testimonial, idx) => (
               <div
